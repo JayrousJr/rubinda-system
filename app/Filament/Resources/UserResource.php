@@ -153,13 +153,13 @@ class UserResource extends Resource
                 SoftDeletingScope::class,
             ]);
 
-        if (Auth::user()->isBoth()) {
-            return $query;
-        }
-        if (Auth::user()->isMember()) {
-            return $query->where("id", Auth::user()->id);
-        }
-        return $query->where('id', null);
-        ;
+        // if (Auth::user()->isBoth()) {
+        return $query;
+        // }
+        // if (Auth::user()->isMember()) {
+        //     return $query->where("id", Auth::user()->id);
+        // }
+        // return $query->where('id', null);
+        // ;
     }
 }
