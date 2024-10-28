@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel as FilamentPanel;
@@ -52,7 +51,7 @@ class User extends Authenticatable implements FilamentUser
      * @var array<int, string>
      */
     protected $appends = [
-        'profile_photo_url',
+        // 'profile_photo_url',
     ];
 
     /**

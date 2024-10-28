@@ -3,11 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\Role;
 use App\Models\User;
-use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -20,7 +17,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UserResource extends Resource
 {
@@ -73,7 +69,8 @@ class UserResource extends Resource
                 Hidden::make('role')
                     ->helperText('This is automatically updated')
                     ->label('Role In the System'),
-                
+
+            ]);
     }
 
     public static function table(Table $table): Table
