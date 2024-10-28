@@ -59,6 +59,9 @@ class UserPolicy
      */
     public function delete(User $user, User $model): bool
     {
+        if ($user->hasRole(["Secretary"])) {
+            return true;
+        }
         return false;
     }
 
@@ -78,6 +81,9 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model): bool
     {
+        if ($user->hasRole(["Secretary"])) {
+            return true;
+        }
         return false;
     }
 }
