@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId("loan_id")->constrained();
             $table->foreignId("user_id")->constrained();
+            $table->string("original_amount");
             $table->string("total_debt");
             $table->string("remaining_debt");
             $table->string("status")->default("active");
