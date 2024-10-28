@@ -8,3 +8,8 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
     ]);
 });
+
+Route::get("/", function () {
+    return Inertia::render('Welcome', [
+    ]);
+})->name("login");
