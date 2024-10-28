@@ -150,14 +150,5 @@ class LoanApplicationResource extends Resource
             ]);
     }
 
-    protected function getFormActions(): array
-    {
-        return [
-            // Example of a custom button
-            ButtonAction::make('Custom Action')
-                ->label('Save')
-                ->action('save')
-                ->color('primary'),
-        ];
-    }
+
 }
