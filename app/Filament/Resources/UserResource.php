@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -47,8 +48,7 @@ class UserResource extends Resource
                     ]),
                 TextInput::make('email')
                     ->email()
-                    ->required()
-                    ->unique()
+                    ->required(fn(string $operation): bool => $operation === 'create')
                     ->maxLength(255),
                 TextInput::make('password')
                     ->password()
@@ -70,26 +70,10 @@ class UserResource extends Resource
                         $role = Role::find($state);
                         $set('role', $role->name);
                     }),
-                TextInput::make('role')
-                    ->required(fn(string $operation): bool => $operation === 'create')
-                    ->readOnly()
-                    ->visible(Auth::user()->isBoth())
+                Hidden::make('role')
                     ->helperText('This is automatically updated')
                     ->label('Role In the System'),
-                FileUpload::make('profile_photo_path')
-                    ->label("Profile")
-                    ->default('img/profile-photos/default.jpg')
-                    ->image()
-                    ->imageResizeMode('cover')
-                    ->imageCropAspectRatio('1:1')
-                    ->imageEditor()
-                    ->imageResizeTargetWidth('500')
-                    ->imageResizeTargetHeight('500')
-                    ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, callable $get): string {
-                        $name = $get('email');
-                        return (string) str('img/profile-photos/profile_' . $name . '.webp');
-                    })->label('Profile Image'),
-            ]);
+                
     }
 
     public static function table(Table $table): Table
@@ -121,8 +105,6 @@ class UserResource extends Resource
                     })
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('profile_photo_path')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
