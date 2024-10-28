@@ -62,11 +62,11 @@ class Debt extends Model
             $lastIncrementPeriod = ceil($lastIncrementDays / 30);
             dump('5.1 Last Increment Days From:' . $lastIncrementDate . " to " . $dueDate . " is: " . $lastIncrementDays);
             dump('5. Last Increment Period (30-day intervals):', $lastIncrementPeriod);
-
+            $diffInPeriod = abs($currentPeriod - $lastIncrementPeriod);
             // Only increment if the current period is greater than the last increment period
             if ($currentPeriod > $lastIncrementPeriod) {
                 // Calculate the increase amount for one overdue period
-                $increaseAmount = ceil(intval($this->original_amount / 30));
+                $increaseAmount = ceil(intval($this->original_amount / 30)) * $diffInPeriod;
                 dump('6. Increase Amount for This Period:', $increaseAmount);
 
                 // Update debt amounts
