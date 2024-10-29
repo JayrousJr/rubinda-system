@@ -16,7 +16,7 @@ class DebtsOverView extends BaseWidget
     {
         $debts = Debt::where("status", "Active");
         $debtsCount = $debts->count();
-        $debtAmount = number_format($debts->sum("total_debt"), 0, ".", ",");
+        $debtAmount = number_format($debts->sum("remaining_debt"), 0, ".", ",");
         $loanRequests = LoanApplication::where("status", "Pending")->count();
         return [
             Stat::make('Jumla ya Madeni', $debtsCount)

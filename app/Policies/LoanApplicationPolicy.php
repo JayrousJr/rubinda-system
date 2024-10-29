@@ -21,7 +21,7 @@ class LoanApplicationPolicy
      */
     public function view(User $user, LoanApplication $loanApplication): bool
     {
-        return false;
+        return true;
     }
 
     /**
