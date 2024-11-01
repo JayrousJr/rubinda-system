@@ -5,12 +5,14 @@ namespace App\Exports;
 use App\Models\Debt;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class DebtsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithColumnWidths, WithStyles
+class DebtsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithColumnWidths, WithStyles, WithColumnFormatting
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -65,6 +67,16 @@ class DebtsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithC
             'B' => ['font' => ['size' => 12]],
             'D' => ['font' => ['size' => 12]],
             'E' => ['font' => ['size' => 12]],
+        ];
+    }
+    public function columnFormats(): array
+    {
+        return [
+            'C' => NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1,
+            'D' => NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1,
+            'E' => NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1,
+            'F' => NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1,
+            'G' => NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1,
         ];
     }
 }
