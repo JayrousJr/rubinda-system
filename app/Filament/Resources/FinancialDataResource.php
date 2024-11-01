@@ -19,7 +19,7 @@ class FinancialDataResource extends Resource
     protected static ?string $model = FinancialData::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-wallet';
-    protected static ?string $navigationGroup = 'System Management';
+    protected static ?string $navigationGroup = 'Finance Management';
 
     public static function form(Form $form): Form
     {

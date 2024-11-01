@@ -22,7 +22,7 @@ class ExpensePolicy
      */
     public function view(User $user, Expense $expense): bool
     {
-        return false;
+        return true;
     }
 
     /**

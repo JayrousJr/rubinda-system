@@ -23,10 +23,13 @@ class UserPolicy
      */
     public function view(User $user, User $model): bool
     {
-        // if ($user->hasRole(["Secretary", "Accountant", "Member"]) ) {
-        return true;
-        // }
-        // return false;
+        if ($user->hasRole('Member')) {
+            return $user->id === $model->id;
+        }
+        if ($user->hasRole(["Secretary", "Accountant"])) {
+            return true;
+        }
+        return false;
     }
 
     /**

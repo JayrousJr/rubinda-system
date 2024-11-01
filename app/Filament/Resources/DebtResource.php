@@ -22,7 +22,7 @@ class DebtResource extends Resource
     {
         return static::getModel()::where("status", "Active")->count();
     }
-    protected static ?string $navigationGroup = 'Debts and Expenses';
+    protected static ?string $navigationGroup = 'Loans Management';
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
     public static function form(Form $form): Form

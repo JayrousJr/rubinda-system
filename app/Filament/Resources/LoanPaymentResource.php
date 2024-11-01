@@ -81,6 +81,7 @@ class LoanPaymentResource extends Resource
                     ->since()
                     ->sortable(),
                 TextColumn::make('userLoanPayment.name')
+                    ->searchable()
                     ->label("Created By"),
                 TextColumn::make('updated_at')
                     ->dateTime()

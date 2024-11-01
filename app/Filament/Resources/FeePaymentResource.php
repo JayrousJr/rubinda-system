@@ -66,6 +66,7 @@ class FeePaymentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('userFeePayment.name')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('feePayment.name')
                     ->searchable()
