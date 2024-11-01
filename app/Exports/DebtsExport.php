@@ -67,6 +67,8 @@ class DebtsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithC
             'B' => ['font' => ['size' => 12]],
             'D' => ['font' => ['size' => 12]],
             'E' => ['font' => ['size' => 12]],
+            'F' => ['font' => ['size' => 12]],
+            'G' => ['font' => ['size' => 12]],
         ];
     }
     public function columnFormats(): array
