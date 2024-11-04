@@ -8,6 +8,7 @@ use App\Models\FinancialData;
 use App\Models\LoanApplication;
 use Carbon\Carbon;
 use Filament\Forms;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -37,12 +38,10 @@ class LoanApplicationResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('user_id')
+                Hidden::make('user_id')
                     ->label("My Account Id")
-                    ->default(Auth::user()->id)
-                    ->readOnly()
-                    ->numeric(),
-                TextInput::make('duration')->default(3)->readOnly(),
+                    ->default(Auth::user()->id),
+                Hidden::make('duration')->default(3),
                 TextInput::make('amount')
                     ->required()
                     ->numeric()
@@ -58,6 +57,7 @@ class LoanApplicationResource extends Resource
                     }),
                 TextInput::make('total_amount_to_be_paid')
                     ->required()
+                    ->helperText("Deni hili litalipwa baada ya miezi mitatu")
                     ->readOnly()
                     ->maxLength(255),
                 TextInput::make('status')
