@@ -52,7 +52,7 @@ class LoanApplicationResource extends Resource
                         $name = Auth::user()->name . ' ' . date("j-M-Y");
                         $amount = floatval($get('amount'));
                         $interest = floatval(FinancialData::first()->interest_rate);
-                        $calculated_Return = round(floatval($amount * (($interest / 100 * 3) + 1)), 0);
+                        $calculated_Return = round(floatval($amount * (($interest * 0.03) + 1)), 0);
                         $set("total_amount_to_be_paid", $calculated_Return);
                         $set("name", $name);
                     }),
