@@ -15,7 +15,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
-class DebtsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithColumnWidths, WithStyles, WithColumnFormatting, WithProperties, WithDrawings
+class DebtsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithColumnWidths, WithStyles, WithColumnFormatting, WithProperties, 
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -103,15 +103,15 @@ class DebtsExport implements FromCollection, WithHeadings, ShouldAutoSize, WithC
             'company' => 'rubinda Family',
         ];
     }
-    public function drawings()
-    {
-        $drawing = new Drawing();
-        $drawing->setName('Logo');
-        $drawing->setDescription('This is my logo');
-        $drawing->setPath(public_path('/storage/image/logo.png'));
-        $drawing->setHeight(90);
-        $drawing->setCoordinates('B3');
+    // public function drawings()
+    // {
+    //     $drawing = new Drawing();
+    //     $drawing->setName('Logo');
+    //     $drawing->setDescription('This is my logo');
+    //     $drawing->setPath(public_path('/storage/image/logo.png'));
+    //     $drawing->setHeight(90);
+    //     $drawing->setCoordinates('B3');
 
-        return $drawing;
-    }
+    //     return $drawing;
+    // }
 }
